@@ -73,15 +73,16 @@ Copilot API now uses a subcommand structure with two main commands:
 
 The following command line options are available for the `start` command:
 
-| Option         | Description                                  | Default | Alias |
-| -------------- | -------------------------------------------- | ------- | ----- |
-| --port         | Port to listen on                            | 4141    | -p    |
-| --verbose      | Enable verbose logging                       | false   | -v    |
-| --business     | Use a business plan GitHub account           | false   | none  |
-| --manual       | Enable manual request approval               | false   | none  |
-| --rate-limit   | Rate limit in seconds between requests       | none    | -r    |
-| --wait         | Wait instead of error when rate limit is hit | false   | -w    |
-| --github-token | Provide GitHub token directly                | none    | -g    |
+| Option         | Description                                  | Default   | Alias |
+| -------------- | -------------------------------------------- | --------- | ----- |
+| --port         | Port to listen on                            | 4141      | -p    |
+| --host         | Host to listen on                            | localhost | -H    |
+| --verbose      | Enable verbose logging                       | false     | -v    |
+| --business     | Use a business plan GitHub account           | false     | none  |
+| --manual       | Enable manual request approval               | false     | none  |
+| --rate-limit   | Rate limit in seconds between requests       | none      | -r    |
+| --wait         | Wait instead of error when rate limit is hit | false     | -w    |
+| --github-token | Provide GitHub token directly                | none      | -g    |
 
 ### Auth Command Options
 

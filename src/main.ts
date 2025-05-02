@@ -13,6 +13,7 @@ import { cacheVSCodeVersion } from "./lib/vscode-version"
 import { server } from "./server"
 
 interface RunServerOptions {
+  host: string
   port: number
   verbose: boolean
   business: boolean
@@ -50,12 +51,13 @@ export async function runServer(options: RunServerOptions): Promise<void> {
   await setupCopilotToken()
   await cacheModels()
 
-  const serverUrl = `http://localhost:${options.port}`
+  const serverUrl = `http://${options.host}:${options.port}`
   consola.box(`Server started at ${serverUrl}`)
 
   serve({
     fetch: server.fetch as ServerHandler,
     port: options.port,
+    hostname: options.host,
   })
 }
 
@@ -65,6 +67,12 @@ const start = defineCommand({
     description: "Start the Copilot API server",
   },
   args: {
+    host: {
+      alias: "H",
+      type: "string",
+      default: "localhost",
+      description: "Host to listen on",
+    },
     port: {
       alias: "p",
       type: "string",
@@ -115,6 +123,7 @@ const start = defineCommand({
     const port = Number.parseInt(args.port, 10)
 
     return runServer({
+      host: args.host,
       port,
       verbose: args.verbose,
       business: args.business,
